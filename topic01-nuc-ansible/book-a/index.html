@@ -98,8 +98,11 @@ h3
       <a class="item" data-tab="02">
         02
       </a>
-      <a class="item" data-tab="Cutting room bin">
-        Cutting room bin
+      <a class="item" data-tab="03">
+        03
+      </a>
+      <a class="item" data-tab="04">
+        04
       </a>
     </div>
 </div>
@@ -143,9 +146,9 @@ h3
 <li>create user accounts</li>
 <li>install Open SSH server</li>
 <li>install ssh tunnelling</li>
-<li>install Ansible</li>
-<li>install git</li>
-<li>install and configure Samba</li>
+<li>install Ansible (optional)</li>
+<li>install git (optional)</li>
+<li>install and configure Samba (optional)</li>
 </ul>
 <p>In creating user accounts do not confuse commands <em>useradd</em> and <em>adduser</em>.</p>
 <ul>
@@ -225,7 +228,7 @@ chmod 644 ictskills_rsa.pub
 </code></pre>
 
 <p>Note: without private key, ssh tunnelling not possible.</p>
-<h2>Ansible installation</h2>
+<h2>Optional: Ansible installation</h2>
 <p>The approach (finally) worked in Ubuntu as described <a href="https://launchpad.net/~ansible/+archive/ansible">here</a>.</p>
 <pre><code>$ sudo apt-get install software-properties-common
 $ sudo apt-add-repository ppa:ansible/ansible
@@ -264,7 +267,7 @@ ansible-playbook -i ansible_hosts play.yml
 ansible-playbook -i ansible_hosts -l 192.168.61.16
 </code></pre>
 
-<h2>Git installation</h2>
+<h2>Optional: Git installation</h2>
 <pre><code>/* Install git */
 sudo apt-get install git
 
@@ -274,7 +277,7 @@ git config --global --unset-all user.name
 
 </code></pre>
 
-<h2>Samba installation and configuration</h2>
+<h2>Optional: Samba installation and configuration</h2>
 <p>Install and configure samba</p>
 <pre><code>apt-get update
 apt-get install samba
@@ -301,7 +304,34 @@ browseable = yes
 public = yes
 </code></pre>
   </div>
-  <div  class="ui tab segment lab" data-tab="Cutting room bin">
+  <div  class="ui tab segment lab" data-tab="03">
+    <h1>SSH Backdoor Test.</h1>
+<p>The following assumptions apply (make appropriate changes):</p>
+<ul>
+<li>IP address of the target machine is 192.168.61.16.</li>
+<li>Host username:  nucadmin</li>
+<li>SSH key: nuc_rsa</li>
+<li>The ssh key-pair is in the .ssh folder in the control machine (nuc_rsa, nuc_rsa.pub)</li>
+</ul>
+<p>From a terminal in the control machine run this command:</p>
+<pre><code>     ssh -i ~/.ssh/nuc_rsa nucadmin@192.168.61.16
+</code></pre>
+
+<p>This should grant password-free access to the host:</p>
+<pre><code>    Welcome to Ubuntu 14.04.4 LTS (GNU/Linux 3.19.0-58-generic x86_64)
+
+     * Documentation:  https://help.ubuntu.com/
+
+    0 packages can be updated.
+    0 updates are security updates.
+
+    Last login: Fri May  6 09:06:34 2016 from 192.168.61.6
+    nucadmin@nucadmin:~$ 
+</code></pre>
+
+<p>If a password is requested then there is an issue and this should be resolved before proceeding.</p>
+  </div>
+  <div  class="ui tab segment lab" data-tab="04">
     <h2>Definitions</h2>
 <p>Official glossary <a href="http://docs.ansible.com/ansible/glossary.html">here.</a></p>
 <p><strong>Host</strong>: the remote machine
