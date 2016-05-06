@@ -332,7 +332,8 @@ public = yes
 <p>If a password is requested then there is an issue and this should be resolved before proceeding.</p>
   </div>
   <div  class="ui tab segment lab" data-tab="04">
-    <h2>Definitions</h2>
+    <h1>Cutting room bin</h1>
+<h2>Definitions</h2>
 <p>Official glossary <a href="http://docs.ansible.com/ansible/glossary.html">here.</a></p>
 <p><strong>Host</strong>: the remote machine
   <strong>Control machine</strong>: the machine on which ansible is installed and the playbooks run</p>
@@ -380,7 +381,7 @@ sudo -H pip install six
 
 </code></pre>
 
-<h2>Run playbooks</h2>
+<h2>Run playbooks (from source)</h2>
 <ul>
 <li>cd into ansible folder and execute </li>
 </ul>
@@ -396,6 +397,11 @@ sudo -H pip install six
 </li>
 </ul>
 <pre><code>ansible-playbook -i ansible_hosts play.yml
+</code></pre>
+
+<h2>Logs</h2>
+<p>To observe activity in the host as Ansible configuration underway, in a terminal in the host machine run:</p>
+<pre><code>tail -f /var/log/syslog
 </code></pre>
 
 <h2>Hosts file</h2>
